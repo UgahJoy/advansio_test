@@ -1,0 +1,1 @@
+double mediumSpaceBetween = 12;
