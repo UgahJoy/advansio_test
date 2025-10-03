@@ -100,7 +100,3 @@ class App {
 
 TextStyle header = App.header();
 TextStyle subHeaders = App.subHeaders();
-TextStyle buttonText = App.header().copyWith(
-  fontSize: 17,
-  color: AppColors.white,
-);

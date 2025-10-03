@@ -1,1 +1,2 @@
-double mediumSpaceBetween = 12;
+double mediumSpaceBetween = 16;
+double screenPadding = 24;

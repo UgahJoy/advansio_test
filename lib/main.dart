@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:advansio_test_mobile/global_variables/global_variables.dart';
 import 'package:advansio_test_mobile/onboarding.dart';
+import 'package:advansio_test_mobile/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         context,
       ).copyWith(textScaler: TextScaler.linear(Platform.isIOS ? 1.02 : 1.04)),
       child: MaterialApp(
+        theme: appTheme,
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: scaffoldMessenger,
         debugShowCheckedModeBanner: false,

@@ -21,16 +21,30 @@ ThemeData appTheme = ThemeData(
   }),
   brightness: Brightness.light,
   useMaterial3: false,
-  inputDecorationTheme: const InputDecorationTheme(
-    contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-  ),
-  textTheme: const TextTheme(
+
+  textTheme: TextTheme(
     bodyMedium: TextStyle(
-      color: AppColors.grey,
+      color: AppColors.blue.withValues(alpha: 0.8),
       fontSize: 15,
       fontWeight: FontWeight.w400,
     ),
   ),
 
-  //elevatedButtonTheme:
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      alignment: Alignment.center,
+      backgroundColor: AppColors.red,
+      textStyle: TextStyle(
+        fontSize: 17,
+
+        color: AppColors.white,
+        fontWeight: FontWeight.w700,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      minimumSize: const Size(double.infinity, 60),
+      foregroundColor: AppColors.white,
+      shadowColor: AppColors.transparent,
+      surfaceTintColor: AppColors.transparent,
+    ),
+  ),
 );
