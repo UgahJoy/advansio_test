@@ -152,11 +152,11 @@ class KeypadRowItem extends StatelessWidget {
     super.key,
     required this.digits,
     required this.onKeyPress,
-  }) : assert(
-         digits.length == 3,
-         'KeypadRowItem must be initialized with exactly 3 values for the row layout.',
-       ),
-       super();
+  })  : assert(
+          digits.length == 3,
+          'KeypadRowItem must be initialized with exactly 3 values for the row layout.',
+        ),
+        super();
 
   @override
   Widget build(BuildContext context) {
@@ -199,9 +199,9 @@ class KeyBoardItem extends StatelessWidget {
     this.icon, // Accept optional icon
     required this.onTap,
   }) : assert(
-         text != null || icon != null,
-         'KeyBoardItem must have either text or icon.',
-       );
+          text != null || icon != null,
+          'KeyBoardItem must have either text or icon.',
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +223,6 @@ class KeyBoardItem extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: header.copyWith(
                         fontSize: 24,
-                        fontWeight: FontWeight.w700,
                         color: AppColors.blue,
                       ),
                     ),
@@ -233,7 +232,7 @@ class KeyBoardItem extends StatelessWidget {
             : Padding(
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Icon(
-                  icon, // Display the icon for backspace
+                  icon,
                   size: 24,
                   color: AppColors.blue,
                 ),

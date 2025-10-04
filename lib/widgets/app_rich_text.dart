@@ -32,7 +32,6 @@ class AppRichText extends StatelessWidget {
               style: subHeaders.copyWith(
                 color: AppColors.blue.withValues(alpha: 0.8),
                 fontSize: 13,
-                fontWeight: FontWeight.w700,
               ),
             ),
           ],

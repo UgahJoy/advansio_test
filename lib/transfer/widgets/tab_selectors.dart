@@ -49,7 +49,6 @@ class TabSelectors extends StatelessWidget {
             style: TextStyle(
               color: AppColors.white,
               fontSize: 12,
-              fontWeight: FontWeight.w700,
             ),
           ),
         ],

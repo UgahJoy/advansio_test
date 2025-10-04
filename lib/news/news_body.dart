@@ -2,7 +2,6 @@ import 'package:advansio_test_mobile/news/widget/new_card.dart';
 import 'package:advansio_test_mobile/repositories/global_repository.dart';
 import 'package:advansio_test_mobile/shared_state/app_state.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
-import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/app_loader.dart';
 import 'package:advansio_test_mobile/widgets/app_textfield.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +55,6 @@ class _NewsBodyState extends ConsumerState<NewsBody> {
             },
             showPrefixIcon: true,
             hintTextfontSize: 14,
-            hintTextFontWeight: FontWeight.w700,
             hintTextColor: AppColors.phoneNumberGrey,
             prefixIcon: Image.asset("assets/search.png", height: 16),
             controller: searchHelpController,
@@ -73,7 +71,6 @@ class _NewsBodyState extends ConsumerState<NewsBody> {
                   ? Center(
                       child: Text(
                         "Unable to Load News",
-                        style: subHeaders.copyWith(fontWeight: FontWeight.w700),
                       ),
                     )
                   : ListView.builder(

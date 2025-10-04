@@ -27,7 +27,6 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           Image.asset("assets/shadow.png", fit: BoxFit.cover),
-
           Positioned(
             top: context.deviceHeight * 0.26,
             left: 0,
@@ -47,13 +46,13 @@ class _OnboardingState extends State<Onboarding> {
               ),
             ),
           ),
-
-          //assets/onboarding_bottom_image.png
           Positioned(
             bottom: 0,
+            left: 0,
+            right: 0,
             child: Image.asset(
+              width: double.infinity,
               "assets/onboarding_bottom_image.png",
-              height: context.deviceHeight * 0.4,
             ),
           ),
           Positioned(

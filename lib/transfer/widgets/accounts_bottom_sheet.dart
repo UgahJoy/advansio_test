@@ -29,7 +29,6 @@ class AccountsBottomSheet extends StatelessWidget {
             "Select Account",
             style: subHeaders.copyWith(
               fontSize: 18,
-              fontWeight: FontWeight.w700,
             ),
           ),
           Gap(context.deviceHeight * 0.06),
@@ -76,7 +75,6 @@ class Accounts extends StatelessWidget {
                 accountNumber,
                 style: subHeaders.copyWith(
                   fontSize: 15,
-                  fontWeight: FontWeight.w700,
                 ),
               ),
               Spacer(),
@@ -84,7 +82,6 @@ class Accounts extends StatelessWidget {
                 "-",
                 style: subHeaders.copyWith(
                   fontSize: 15,
-                  fontWeight: FontWeight.w700,
                 ),
               ),
               Spacer(),
@@ -96,7 +93,6 @@ class Accounts extends StatelessWidget {
                   amount,
                   style: subHeaders.copyWith(
                     fontSize: 15,
-                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),

@@ -23,7 +23,6 @@ class RecentBeneficiaries extends StatelessWidget {
       child: Container(
         width: 118,
         margin: EdgeInsets.all(4),
-
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(10),
@@ -51,12 +50,10 @@ class RecentBeneficiaries extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-
             Text(
               name,
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: FontWeight.w700,
                 color: AppColors.blue,
               ),
             ),
@@ -65,7 +62,6 @@ class RecentBeneficiaries extends StatelessWidget {
               "+090078601",
               style: TextStyle(
                 fontSize: 12,
-                fontWeight: FontWeight.w700,
                 color: AppColors.phoneNumberGrey,
               ),
             ),

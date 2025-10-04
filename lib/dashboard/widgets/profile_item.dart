@@ -24,11 +24,9 @@ class ProfileItem extends StatelessWidget {
                     "N170,425",
                     style: header.copyWith(
                       color: AppColors.white,
-                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsetsGeometry.only(
                     top: context.deviceHeight * 0.04,

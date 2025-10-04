@@ -56,7 +56,6 @@ class _TransferAppBarState extends State<TransferAppBar> {
                       Text(
                         "Transfer",
                         style: subHeaders.copyWith(
-                          fontWeight: FontWeight.w700,
                           color: AppColors.white,
                         ),
                       ),

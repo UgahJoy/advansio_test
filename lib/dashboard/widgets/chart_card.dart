@@ -41,7 +41,6 @@ class ChartCard extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Gap(8),
                 Expanded(
                   child: ScoreBoard(remark: "700", title: "Credit Score"),
@@ -50,7 +49,6 @@ class ChartCard extends StatelessWidget {
               ],
             ),
           ),
-
           AppDivider(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -65,7 +63,6 @@ class ChartCard extends StatelessWidget {
             child: Text(
               "Tell me more",
               style: TextStyle(
-                fontWeight: FontWeight.w700,
                 decoration: TextDecoration.underline,
                 color: AppColors.primaryColor,
               ),
@@ -89,7 +86,7 @@ class ScoreBoard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title, style: TextStyle(fontSize: 12)),
-        Text(remark, style: subHeaders.copyWith(fontWeight: FontWeight.w700)),
+        Text(remark, style: subHeaders),
       ],
     );
   }

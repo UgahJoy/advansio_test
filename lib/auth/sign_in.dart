@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
             Gap(20),
             Text(
               "Welcome Back!",
-              style: header.copyWith(fontWeight: FontWeight.w700),
+              style: header,
             ),
             Gap(8),
             Text(

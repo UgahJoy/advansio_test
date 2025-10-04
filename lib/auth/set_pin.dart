@@ -41,12 +41,13 @@ class _SetPinState extends State<SetPin> {
                 ? context.deviceHeight * 0.07
                 : context.deviceHeight * 0.12,
           ),
-
           Align(
             alignment: AlignmentGeometry.center,
             child: Text(
               widget.title,
-              style: header.copyWith(fontSize: 26, fontWeight: FontWeight.w700),
+              style: header.copyWith(
+                fontSize: 26,
+              ),
             ),
           ),
           Align(

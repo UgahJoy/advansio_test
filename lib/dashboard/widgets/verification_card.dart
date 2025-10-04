@@ -1,6 +1,5 @@
 import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
-import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/app_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -39,7 +38,6 @@ class VerifciationCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "75%",
-                      style: subHeaders.copyWith(fontWeight: FontWeight.w700),
                     ),
                   ),
                   Text("7 of 10 completed", style: TextStyle(fontSize: 12)),
@@ -53,9 +51,7 @@ class VerifciationCard extends StatelessWidget {
                 color: AppColors.indicatorYellow,
                 backgroundColor: AppColors.blue.withValues(alpha: 0.2),
               ),
-
               AppDivider(topMargin: 20),
-
               Row(
                 children: [
                   Padding(
@@ -71,7 +67,6 @@ class VerifciationCard extends StatelessWidget {
                           "Personal Information",
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         Gap(8),
@@ -84,7 +79,6 @@ class VerifciationCard extends StatelessWidget {
                   ),
                 ],
               ),
-
               Gap(12),
             ],
           ),
@@ -104,7 +98,9 @@ class ScoreBoard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(remark, style: subHeaders.copyWith(fontWeight: FontWeight.w700)),
+        Text(
+          remark,
+        ),
       ],
     );
   }

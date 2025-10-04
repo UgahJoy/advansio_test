@@ -28,13 +28,12 @@ class _SuccessPageState extends State<SuccessPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Gap(context.deviceHeight * 0.1),
-
           Image.asset("assets/thumps_up.png", height: 233),
           Gap(context.deviceHeight * 0.1),
           Text(
             textAlign: TextAlign.center,
             widget.title,
-            style: header.copyWith(fontWeight: FontWeight.w700, height: 1.3),
+            style: header.copyWith(height: 1.3),
           ),
           Gap(12),
           Text(

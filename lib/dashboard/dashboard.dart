@@ -89,7 +89,6 @@ class _DashboardState extends State<Dashboard> {
                           "Activity",
                           style: subHeaders.copyWith(
                             fontSize: 18,
-                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         Gap(20),
@@ -107,7 +106,6 @@ class _DashboardState extends State<Dashboard> {
                           "Complete Verification",
                           style: subHeaders.copyWith(
                             fontSize: 18,
-                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         Gap(12),

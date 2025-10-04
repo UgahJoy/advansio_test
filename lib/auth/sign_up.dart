@@ -2,7 +2,6 @@ import 'package:advansio_test_mobile/auth/sign_in.dart';
 import 'package:advansio_test_mobile/auth/success_page.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
-import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/agreement.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
 import 'package:advansio_test_mobile/widgets/app_rich_text.dart';
@@ -33,7 +32,6 @@ class _SignUpState extends State<SignUp> {
             Gap(20),
             Text(
               "Welcome!",
-              style: header.copyWith(fontWeight: FontWeight.w700),
             ),
             Gap(8),
             Text(
@@ -47,8 +45,6 @@ class _SignUpState extends State<SignUp> {
             AppTextfield(
               hintText: "Email Address",
               controller: emailController,
-
-              //isPwd: true,
             ),
             Gap(6),
             AppTextfield(
@@ -56,9 +52,7 @@ class _SignUpState extends State<SignUp> {
               hintText: "Password",
               controller: pwdController,
               isObscureText: true,
-              //isPwd: true,
             ),
-
             Gap(12),
             Agreement(
               isChecked: isChecked,
@@ -86,9 +80,7 @@ class _SignUpState extends State<SignUp> {
               ),
               instrcuction: "Sign up my Account",
             ),
-
             Gap(context.deviceHeight * 0.1),
-
             AppRichText(
               onTap: () => Navigator.push(
                 context,

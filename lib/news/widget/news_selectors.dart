@@ -57,7 +57,6 @@ class _NewsSelectorsState extends State<NewsSelectors> {
                       Text(
                         "News",
                         style: subHeaders.copyWith(
-                          fontWeight: FontWeight.w700,
                           color: AppColors.white,
                         ),
                       ),
@@ -157,7 +156,6 @@ class NewSelectors extends StatelessWidget {
                   ? AppColors.darkPrimaryColor
                   : AppColors.white,
               fontSize: 12,
-              fontWeight: FontWeight.w700,
             ),
           ),
         ),

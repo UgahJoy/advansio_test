@@ -34,8 +34,9 @@ class _BankState extends State<Bank> {
           Gap(20),
           Text(
             "Enter transfer details",
-            style:
-                subHeaders.copyWith(fontSize: 18, fontWeight: FontWeight.w700),
+            style: subHeaders.copyWith(
+              fontSize: 18,
+            ),
           ),
           Gap(24),
           AppTextfield(

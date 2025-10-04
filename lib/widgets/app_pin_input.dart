@@ -32,7 +32,6 @@ class _AppPinFiled2State extends State<AppPinFiled> {
       textStyle: header.copyWith(
         fontSize: 24,
         color: AppColors.blue,
-        fontWeight: FontWeight.w700,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.transparent),
@@ -43,7 +42,6 @@ class _AppPinFiled2State extends State<AppPinFiled> {
     return Pinput(
       controller: widget.controller,
       readOnly: true,
-
       length: widget.plinLength ?? 4,
       defaultPinTheme: enableTheme,
       focusedPinTheme: enableTheme.copyWith(
@@ -60,7 +58,6 @@ class _AppPinFiled2State extends State<AppPinFiled> {
       showCursor: true,
       obscureText: true,
       obscuringWidget: Image.asset("assets/hash.png", height: 13),
-
       onChanged: widget.onChanged,
       onCompleted: widget.onCompleted,
     );

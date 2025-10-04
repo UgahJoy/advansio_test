@@ -60,7 +60,6 @@ class _AllContactsState extends State<AllContacts> {
               "All contacts",
               style: subHeaders.copyWith(
                 fontSize: 18,
-                fontWeight: FontWeight.w700,
               ),
             ),
             Gap(16),
