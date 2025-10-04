@@ -1,3 +1,4 @@
+import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/widgets/get_started_button.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -29,12 +29,12 @@ class _OnboardingState extends State<Onboarding> {
           Image.asset("assets/shadow.png", fit: BoxFit.cover),
 
           Positioned(
-            top: 228,
+            top: context.deviceHeight * 0.26,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
-                height: 68,
+                height: 60,
                 width: 227,
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
@@ -53,10 +53,15 @@ class _OnboardingState extends State<Onboarding> {
             bottom: 0,
             child: Image.asset(
               "assets/onboarding_bottom_image.png",
-              height: size.height * 0.4,
+              height: context.deviceHeight * 0.4,
             ),
           ),
-          Positioned(top: 679, left: 0, right: 0, child: GetStartedButton()),
+          Positioned(
+            bottom: context.deviceHeight * 0.2,
+            left: 0,
+            right: 0,
+            child: GetStartedButton(),
+          ),
         ],
       ),
     );

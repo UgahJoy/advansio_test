@@ -8,11 +8,29 @@ class AppTextfield extends StatefulWidget {
   final bool? isPwd;
   final bool isObscureText;
   final String hintText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final FontWeight? hintTextFontWeight;
+  final double? hintTextfontSize;
   final TextEditingController controller;
+  final Color? hintTextColor;
+  final Function()? onTap;
+  final bool showPrefixIcon;
+  final bool readOnly;
+  final Function(String)? onChanged;
   const AppTextfield({
     super.key,
     this.filledColor,
+    this.readOnly = false,
     this.isPwd,
+    this.onTap,
+    this.showPrefixIcon = false,
+    this.suffixIcon,
+    this.onChanged,
+    this.hintTextColor,
+    this.prefixIcon,
+    this.hintTextfontSize,
+    this.hintTextFontWeight,
     required this.controller,
     required this.hintText,
     this.isObscureText = false,
@@ -48,21 +66,33 @@ class _AppTextfieldState extends State<AppTextfield> {
     return SizedBox(
       height: 50,
       child: TextFormField(
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
+        onChanged: widget.onChanged,
         focusNode: _myFocusNode,
         cursorColor: AppColors.blue,
         obscureText: widget.isObscureText && isVisible,
         controller: widget.controller,
         decoration: InputDecoration(
           hintText: widget.hintText,
-
-          hintStyle: header.copyWith(
-            color: AppColors.hintTextBlue,
-            fontSize: 15,
-            fontWeight: FontWeight.w400,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 15,
           ),
+          hintStyle: header.copyWith(
+            color: widget.hintTextColor ?? AppColors.hintTextBlue,
+            fontSize: widget.hintTextfontSize ?? 15,
+            fontWeight: widget.hintTextFontWeight ?? FontWeight.w400,
+          ),
+          prefixIcon: widget.showPrefixIcon
+              ? Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: widget.prefixIcon,
+                )
+              : null,
           suffixIcon: widget.isPwd == true
               ? Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(isVisible ? 20 : 6),
                   child: AppInkWell(
                     onTap: () {
                       setState(() {
@@ -71,10 +101,13 @@ class _AppTextfieldState extends State<AppTextfield> {
                     },
                     child: isVisible
                         ? Image.asset("assets/visibility_on.png", height: 11)
-                        : Image.asset("assets/visibility_on.png", height: 11),
+                        : Image.asset("assets/visibility_off.png", height: 11),
                   ),
                 )
-              : null,
+              : Padding(
+                  padding: const EdgeInsets.all(22.0),
+                  child: widget.suffixIcon,
+                ),
           filled: true,
           fillColor: _myFocusNode.hasFocus
               ? AppColors.transparent

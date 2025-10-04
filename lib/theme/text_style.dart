@@ -8,7 +8,7 @@ class App {
     bool? inherit,
     Color color = AppColors.blue,
     Color? backgroundColor,
-    double fontSize = 35,
+    double fontSize = 30,
     FontWeight fontWeight = FontWeight.w700,
     FontStyle? fontStyle,
     double letterSpacing = 0,
@@ -65,37 +65,6 @@ class App {
         fontFamily: fontFamily,
         overflow: overflow,
       );
-
-  // static TextStyle body({
-  //   bool? inherit,
-  //   Color color = AppColors.blue,
-  //   Color? backgroundColor,
-  //   double fontSize = 15,
-  //   double? height,
-  //   FontWeight fontWeight = FontWeight.w400,
-  //   FontStyle? fontStyle,
-  //   double letterSpacing = 0,
-  //   double? wordSpacing,
-  //   Locale? locale,
-  //   TextDecorationStyle? decorationStyle,
-  //   double? decorationThickness,
-  //   String? fontFamily,
-  //   TextOverflow? overflow,
-  // }) => Theme.of(navigatorKey.currentState!.context).textTheme.titleMedium!
-  //     .copyWith(
-  //       color: color,
-  //       height: height,
-  //       inherit: inherit,
-  //       backgroundColor: backgroundColor,
-  //       fontSize: fontSize,
-  //       letterSpacing: letterSpacing,
-  //       wordSpacing: wordSpacing,
-  //       locale: locale,
-  //       decorationStyle: decorationStyle,
-  //       decorationThickness: decorationThickness,
-  //       fontFamily: fontFamily,
-  //       overflow: overflow,
-  //     );
 }
 
 TextStyle header = App.header();

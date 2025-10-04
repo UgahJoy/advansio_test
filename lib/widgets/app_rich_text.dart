@@ -23,7 +23,7 @@ class AppRichText extends StatelessWidget {
           text: question,
           style: subHeaders.copyWith(
             color: AppColors.blue.withValues(alpha: 0.8),
-            fontSize: 15,
+            fontSize: 13,
             fontWeight: FontWeight.w400,
           ),
           children: [
@@ -31,7 +31,7 @@ class AppRichText extends StatelessWidget {
               text: " $instruction",
               style: subHeaders.copyWith(
                 color: AppColors.blue.withValues(alpha: 0.8),
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
               ),
             ),

@@ -5,20 +5,22 @@ import 'package:advansio_test_mobile/onboarding.dart';
 import 'package:advansio_test_mobile/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //await Hive.initFlutter();
+  //Hive.registerAdapter(UserAdapter());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
       data: MediaQuery.of(
         context,
-      ).copyWith(textScaler: TextScaler.linear(Platform.isIOS ? 1.02 : 1.04)),
+      ).copyWith(textScaler: TextScaler.linear(Platform.isIOS ? 1.02 : 1)),
       child: MaterialApp(
         theme: appTheme,
         navigatorKey: navigatorKey,

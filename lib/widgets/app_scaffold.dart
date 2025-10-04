@@ -3,16 +3,43 @@ import 'package:flutter/material.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
-
-  const AppScaffold({super.key, required this.body});
+  final Widget? bottom;
+  final bool extendBodyBehindAppBar;
+  final bool safeAreaTop;
+  final Color? backGroundColor;
+  final PreferredSizeWidget? appBar;
+  final double? scaffoldPadding;
+  const AppScaffold({
+    super.key,
+    required this.body,
+    this.appBar,
+    this.bottom,
+    this.backGroundColor,
+    this.safeAreaTop = true,
+    this.scaffoldPadding,
+    this.extendBodyBehindAppBar = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenPadding),
-          child: body,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: backGroundColor,
+        bottomNavigationBar: bottom,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
+        appBar: appBar,
+        body: SafeArea(
+          top: safeAreaTop,
+          bottom: safeAreaTop,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: scaffoldPadding ?? screenPadding,
+            ),
+            child: body,
+          ),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:advansio_test_mobile/auth/sign_in.dart';
 import 'package:advansio_test_mobile/auth/success_page.dart';
+import 'package:advansio_test_mobile/helpers/extensions.dart';
+import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/agreement.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
@@ -7,6 +9,7 @@ import 'package:advansio_test_mobile/widgets/app_rich_text.dart';
 import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
 import 'package:advansio_test_mobile/widgets/app_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -22,61 +25,80 @@ class _SignUpState extends State<SignUp> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return AppScaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          Text("Welcome!", style: header.copyWith(fontWeight: FontWeight.w700)),
-          SizedBox(height: 16),
-          Text(
-            textAlign: TextAlign.center,
-            "Please provide following\ndetails for your new account",
-          ),
-          SizedBox(height: size.height * 0.07),
-          AppTextfield(
-            hintText: "Full Name",
-            controller: nameController,
-
-            //isPwd: true,
-          ),
-          SizedBox(height: 8),
-          AppTextfield(
-            hintText: "Email Address",
-            controller: emailController,
-
-            //isPwd: true,
-          ),
-          SizedBox(height: 8),
-          AppTextfield(
-            isPwd: true,
-            hintText: "Password",
-            controller: pwdController,
-            isObscureText: true,
-            //isPwd: true,
-          ),
-
-          SizedBox(height: 30),
-          Agreement(isChecked: isChecked),
-          SizedBox(height: 50),
-          AppButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SuccessPage()),
+      backGroundColor: AppColors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Gap(20),
+            Text(
+              "Welcome!",
+              style: header.copyWith(fontWeight: FontWeight.w700),
             ),
-            instrcuction: "Sign up my Account",
-          ),
-
-          SizedBox(height: 80),
-          AppRichText(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SignIn()),
+            Gap(8),
+            Text(
+              textAlign: TextAlign.center,
+              "Please provide following\ndetails for your new account",
+              style: TextStyle(fontSize: 14, height: 1.7),
             ),
-            instruction: "- Sign In",
-            question: "Already have an Account?",
-          ),
-        ],
+            Gap(context.deviceHeight * 0.07),
+            AppTextfield(hintText: "Full Name", controller: nameController),
+            Gap(6),
+            AppTextfield(
+              hintText: "Email Address",
+              controller: emailController,
+
+              //isPwd: true,
+            ),
+            Gap(6),
+            AppTextfield(
+              isPwd: true,
+              hintText: "Password",
+              controller: pwdController,
+              isObscureText: true,
+              //isPwd: true,
+            ),
+
+            Gap(12),
+            Agreement(
+              isChecked: isChecked,
+              onChnaged: (value) {
+                setState(() {
+                  isChecked = value!;
+                });
+              },
+            ),
+            Gap(35),
+            AppButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SuccessPage(
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn()),
+                    ),
+                    title: "Account Created!",
+                    message:
+                        "Dear user your account has been created successfully. Continue to start using app",
+                  ),
+                ),
+              ),
+              instrcuction: "Sign up my Account",
+            ),
+
+            Gap(context.deviceHeight * 0.1),
+
+            AppRichText(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignIn()),
+              ),
+              instruction: "- Sign In",
+              question: "Already have an account?",
+            ),
+          ],
+        ),
       ),
     );
   }

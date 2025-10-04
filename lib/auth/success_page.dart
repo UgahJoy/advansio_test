@@ -1,10 +1,20 @@
+import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
 import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class SuccessPage extends StatefulWidget {
-  const SuccessPage({super.key});
+  final String message;
+  final String title;
+  final Function() onPressed;
+  const SuccessPage({
+    super.key,
+    required this.message,
+    required this.title,
+    required this.onPressed,
+  });
 
   @override
   State<SuccessPage> createState() => _SuccessPageState();
@@ -17,21 +27,23 @@ class _SuccessPageState extends State<SuccessPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 20),
+          Gap(context.deviceHeight * 0.1),
 
           Image.asset("assets/thumps_up.png", height: 233),
-
-          Text(
-            "Account Created!",
-            style: header.copyWith(fontWeight: FontWeight.w700),
-          ),
-          SizedBox(height: 16),
+          Gap(context.deviceHeight * 0.1),
           Text(
             textAlign: TextAlign.center,
-            "Dear user your account has been created successfully. Continue to start using app",
+            widget.title,
+            style: header.copyWith(fontWeight: FontWeight.w700, height: 1.3),
           ),
-
-          AppButton(onPressed: () {}, instrcuction: "Continue"),
+          Gap(12),
+          Text(
+            textAlign: TextAlign.center,
+            widget.message,
+            style: TextStyle(fontSize: 12, height: 1.7),
+          ),
+          Gap(context.deviceHeight * 0.22),
+          AppButton(onPressed: widget.onPressed, instrcuction: "Continue"),
         ],
       ),
     );

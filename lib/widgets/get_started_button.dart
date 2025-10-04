@@ -16,7 +16,7 @@ class GetStartedButton extends StatelessWidget {
       ),
       child: Center(
         child: Container(
-          height: 65,
+          height: 60,
           width: 227,
           padding: EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
@@ -29,6 +29,7 @@ class GetStartedButton extends StatelessWidget {
               Text(
                 "Get Started",
                 style: subHeaders.copyWith(
+                  fontSize: 16,
                   color: AppColors.black,
                   fontWeight: FontWeight.w600,
                   fontFamily: "Poppins",

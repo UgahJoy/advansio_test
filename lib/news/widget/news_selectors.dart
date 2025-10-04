@@ -1,0 +1,167 @@
+import 'package:advansio_test_mobile/global_variables/constants.dart';
+import 'package:advansio_test_mobile/helpers/extensions.dart';
+import 'package:advansio_test_mobile/theme/app_colors.dart';
+import 'package:advansio_test_mobile/theme/text_style.dart';
+import 'package:advansio_test_mobile/widgets/app_inkwell.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+class NewsSelectors extends StatefulWidget {
+  final int currentIndex;
+  final Function(int) onChanged;
+  const NewsSelectors({
+    super.key,
+    required this.currentIndex,
+    required this.onChanged,
+  });
+
+  @override
+  State<NewsSelectors> createState() => _NewsSelectorsState();
+}
+
+class _NewsSelectorsState extends State<NewsSelectors> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: context.deviceHeight * 0.3,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [AppColors.primaryColor, AppColors.primaryColorGradient],
+            ),
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenPadding),
+              child: Column(
+                children: [
+                  Gap(50),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppInkWell(
+                        onTap: () => Navigator.pop(context),
+                        child: Image.asset(
+                          "assets/back_arrow.png",
+                          height: 20,
+                          color: AppColors.white,
+                        ),
+                      ),
+                      Text(
+                        "News",
+                        style: subHeaders.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.white,
+                        ),
+                      ),
+                      Gap(20),
+                    ],
+                  ),
+                  Gap(40),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: NewSelectors(
+                          text: "Nigeria",
+                          onTap: () {
+                            widget.onChanged(0);
+                          },
+                          index: 0,
+                          currentIndex: widget.currentIndex,
+                        ),
+                      ),
+                      Expanded(
+                        child: NewSelectors(
+                          text: "Ghana",
+                          onTap: () {
+                            widget.onChanged(1);
+                          },
+                          index: 1,
+                          currentIndex: widget.currentIndex,
+                        ),
+                      ),
+                      Expanded(
+                        child: NewSelectors(
+                          text: "Angola",
+                          onTap: () {
+                            setState(() {
+                              widget.onChanged(2);
+                            });
+                          },
+                          index: 2,
+                          currentIndex: widget.currentIndex,
+                        ),
+                      ),
+                      Expanded(
+                        child: NewSelectors(
+                          text: "Niger",
+                          onTap: () {
+                            widget.onChanged(3);
+                          },
+                          index: 3,
+                          currentIndex: widget.currentIndex,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class NewSelectors extends StatelessWidget {
+  final String text;
+  final Function() onTap;
+  final int index;
+  final int currentIndex;
+
+  const NewSelectors({
+    super.key,
+    required this.text,
+    required this.onTap,
+    required this.index,
+    required this.currentIndex,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AppInkWell(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8),
+        height: 62,
+        width: 70,
+        decoration: BoxDecoration(
+          color: index == currentIndex
+              ? AppColors.white
+              : AppColors.darkPrimaryColor,
+          borderRadius: BorderRadius.circular(19),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: index == currentIndex
+                  ? AppColors.darkPrimaryColor
+                  : AppColors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

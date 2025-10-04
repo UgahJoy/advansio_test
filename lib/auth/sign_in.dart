@@ -1,10 +1,15 @@
+import 'package:advansio_test_mobile/auth/set_pin.dart';
 import 'package:advansio_test_mobile/auth/sign_up.dart';
+import 'package:advansio_test_mobile/dashboard/dashboard.dart';
+import 'package:advansio_test_mobile/helpers/extensions.dart';
+import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
 import 'package:advansio_test_mobile/widgets/app_rich_text.dart';
 import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
 import 'package:advansio_test_mobile/widgets/app_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -18,52 +23,70 @@ class _SignInState extends State<SignIn> {
   final pwdController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return AppScaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          Text(
-            "Welcome Back!",
-            style: header.copyWith(fontWeight: FontWeight.w700),
-          ),
-          SizedBox(height: 16),
-          Text(textAlign: TextAlign.center, "Sign in to continue "),
-          SizedBox(height: size.height * 0.1),
-
-          AppTextfield(
-            hintText: "Email Address",
-            controller: emailController,
-
-            //isPwd: true,
-          ),
-          SizedBox(height: 8),
-          AppTextfield(
-            isPwd: true,
-            hintText: "Password",
-            controller: pwdController,
-            isObscureText: true,
-            //isPwd: true,
-          ),
-          SizedBox(height: 16),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text("Forgot Password?", style: TextStyle(fontSize: 12)),
-          ),
-          // - Sign
-          SizedBox(height: 50),
-          AppButton(onPressed: () {}, instrcuction: "Sign in My Account"),
-
-          SizedBox(height: 20),
-          AppRichText(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SignUp()),
+      backGroundColor: AppColors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Gap(20),
+            Text(
+              "Welcome Back!",
+              style: header.copyWith(fontWeight: FontWeight.w700),
             ),
-            instruction: "- Sign Up",
-            question: "Already have an Account?",
-          ),
-        ],
+            Gap(8),
+            Text(
+              textAlign: TextAlign.center,
+              "Sign in to continue",
+              style: TextStyle(fontSize: 14),
+            ),
+            Gap(context.deviceHeight * 0.09),
+
+            AppTextfield(hintText: "Email", controller: emailController),
+            Gap(6),
+            AppTextfield(
+              isPwd: true,
+              hintText: "Password",
+              controller: pwdController,
+              isObscureText: true,
+              //isPwd: true,
+            ),
+            Gap(16),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text("Forgot Password?", style: TextStyle(fontSize: 12)),
+            ),
+            // - Sign
+            Gap(50),
+            AppButton(
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SetPin(
+                    onTap: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Dashboard()),
+                    ),
+                    buttonText: "Save PIN",
+                    title: "Set your PIN",
+                    message: "You will use this to login next time",
+                  ),
+                ),
+              ),
+              instrcuction: "Sign in My Account",
+            ),
+
+            Gap(20),
+            AppRichText(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUp()),
+              ),
+              // - Sign Up
+              instruction: "- Sign Up",
+              question: "Don’t have an account?",
+            ),
+          ],
+        ),
       ),
     );
   }

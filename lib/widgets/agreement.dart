@@ -1,45 +1,44 @@
 import 'package:advansio_test_mobile/theme/app_colors.dart';
+import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
-class Agreement extends StatefulWidget {
+class Agreement extends StatelessWidget {
   final bool isChecked;
-  const Agreement({super.key, required this.isChecked});
+  final ValueChanged<bool?>? onChnaged;
+  const Agreement({
+    super.key,
+    required this.isChecked,
+    required this.onChnaged,
+  });
 
-  @override
-  State<Agreement> createState() => _AgreementState();
-}
-
-class _AgreementState extends State<Agreement> {
-  bool isTap = false;
   @override
   Widget build(BuildContext context) {
-    isTap = widget.isChecked;
     return Row(
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 18.0),
           child: SizedBox(
-            height: 26,
+            width: 40,
+
             child: Checkbox(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  4,
-                ), // Adjust the radius for subtle rounding
+                borderRadius: BorderRadius.circular(4),
               ),
               side: BorderSide(width: 1, color: AppColors.grey),
-              value: isTap,
-              activeColor: AppColors.blue,
-              onChanged: (val) {
-                setState(() {
-                  isTap = val!;
-                });
-              },
+              value: isChecked,
+              activeColor: AppColors.primaryColor,
+              onChanged: onChnaged,
             ),
           ),
         ),
         Expanded(
           child: Text(
             "By creating your account you have to agree with our Teams and Conditions.",
+            style: subHeaders.copyWith(
+              fontSize: 13,
+              color: AppColors.blue.withValues(alpha: 0.8),
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
       ],

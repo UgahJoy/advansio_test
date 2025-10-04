@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 ThemeData appTheme = ThemeData(
   fontFamily: "DM Sans",
   primaryColor: AppColors.white,
-  scaffoldBackgroundColor: AppColors.white,
+  scaffoldBackgroundColor: AppColors.offWhite,
   primarySwatch: const MaterialColor(0xff009BEF, <int, Color>{
     50: AppColors.white,
     100: AppColors.white,
@@ -25,23 +25,23 @@ ThemeData appTheme = ThemeData(
   textTheme: TextTheme(
     bodyMedium: TextStyle(
       color: AppColors.blue.withValues(alpha: 0.8),
-      fontSize: 15,
       fontWeight: FontWeight.w400,
+
+      fontSize: 15,
     ),
   ),
-
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       alignment: Alignment.center,
       backgroundColor: AppColors.red,
       textStyle: TextStyle(
-        fontSize: 17,
-
+        fontSize: 15,
+        fontFamily: "DM Sans",
         color: AppColors.white,
         fontWeight: FontWeight.w700,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      minimumSize: const Size(double.infinity, 60),
+      minimumSize: const Size(double.infinity, 50),
       foregroundColor: AppColors.white,
       shadowColor: AppColors.transparent,
       surfaceTintColor: AppColors.transparent,
