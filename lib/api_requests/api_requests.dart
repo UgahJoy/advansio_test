@@ -14,36 +14,15 @@ class ApiRequests {
   Future<dynamic> getRequst({bool isFull = false}) async {
     showProgress();
     try {
+      final url = isFull ? key : _baseUrl + key;
       var response = await _client.get(
-        _baseUrl,
+        url,
         options: Options(headers: await _getHeader()),
       );
-
-      if (response.statusCode == 401) {
-        // autoLogout();
-        return null;
-      }
-      if (response.statusCode == 400 || response.statusCode == 500) {
-        return response.data;
-      }
 
       return response.data;
     } on DioException catch (e) {
       log("Dio Error on GET: ${e.message}");
-
-      if (e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout) {
-        return "failed";
-      }
-
-      if (e.response != null) {
-        if (e.response!.statusCode == 401) {
-          // autoLogout();
-          return null;
-        }
-        return e.response!.data;
-      }
-
       return "failed";
     } catch (ex) {
       log("General Error on GET: ${ex.toString()}");
@@ -57,14 +36,10 @@ class ApiRequests {
     required dynamic data,
     bool isFull = false,
   }) async {
-    // Set Dio options locally for this request
     _client.options.connectTimeout = Duration(seconds: _timeout);
     _client.options.receiveTimeout = Duration(seconds: _timeout);
 
-    // Determine the final URL
     final url = isFull ? key : _baseUrl + key;
-
-    // showProgresss();
 
     try {
       final headers = await _getHeader();
@@ -74,32 +49,9 @@ class ApiRequests {
         data: data,
         options: Options(headers: headers),
       );
-
-      if (response.statusCode == 401) {
-        // autoLogout();
-        return null;
-      }
-      if (response.statusCode == 400 || response.statusCode == 500) {
-        return response.data;
-      }
-
       return response.data;
-    } on DioException catch (e) {
-      log("Dio Error on POST: ${e.message}");
-
-      if (e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout) {
-        return "failed";
-      }
-
-      if (e.response != null) {
-        if (e.response!.statusCode == 401) {
-          // autoLogout();
-          return null;
-        }
-        return e.response!.data;
-      }
-
+    } on DioException catch (ex) {
+      log("General Error on GET: ${ex.toString()}");
       return "failed";
     } catch (ex) {
       log("General Error on POST: ${ex.toString()}");

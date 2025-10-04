@@ -1,33 +1,28 @@
 // ignore_for_file: unrelated_type_equality_checks
 
-import 'package:advansio_test_mobile/news/widget/new_card.dart';
+import 'package:advansio_test_mobile/news/news_body.dart';
 import 'package:advansio_test_mobile/news/widget/news_selectors.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
-import 'package:advansio_test_mobile/widgets/app_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class NewsScreen extends StatefulWidget {
+class NewsScreen extends ConsumerStatefulWidget {
   const NewsScreen({super.key});
 
   @override
-  State<NewsScreen> createState() => _NewsScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _NewsScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
+class _NewsScreenState extends ConsumerState<NewsScreen> {
   final searchHelpController = TextEditingController();
+  final List<String> newsSuffix = ["ng", "gh", "ao", "ne"];
   int currentIndex = 0;
   bool isCardOpened = false;
   void _handleSelection(int index) {
     setState(() {
       currentIndex = index;
-    });
-  }
-
-  void _handleNewTrialerIcon(bool isOpened) {
-    setState(() {
-      isCardOpened = !isOpened;
     });
   }
 
@@ -51,37 +46,9 @@ class _NewsScreenState extends State<NewsScreen> {
             onChanged: _handleSelection,
           ),
           const Gap(30),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: AppTextfield(
-              onChanged: (p0) {
-                setState(() {});
-              },
-              showPrefixIcon: true,
-              hintTextfontSize: 14,
-              hintTextFontWeight: FontWeight.w700,
-              hintTextColor: AppColors.phoneNumberGrey,
-              prefixIcon: Image.asset("assets/search.png", height: 16),
-              controller: searchHelpController,
-              hintText: "Search news...",
-            ),
-          ),
-          const Gap(30),
-
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-
-              itemBuilder: (context, index) => NewCard(
-                newsInfo: "news body",
-                title: "Breaking new",
-                isNewOpend: isCardOpened,
-                isOpened: _handleNewTrialerIcon,
-              ),
-            ),
-          ),
+          NewsBody(
+            countrySuffix: newsSuffix[currentIndex],
+          )
         ],
       ),
     );
