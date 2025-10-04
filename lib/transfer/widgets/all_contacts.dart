@@ -40,11 +40,11 @@ class _AllContactsState extends State<AllContacts> {
   Widget build(BuildContext context) {
     var searchResult = searches.where((item) {
       final nameMatches = item.name.toLowerCase().contains(
-        searchController.text.toLowerCase(),
-      );
+            searchController.text.toLowerCase(),
+          );
       final numberMatches = item.phoneNumber.toLowerCase().contains(
-        searchController.text.toLowerCase(),
-      );
+            searchController.text.toLowerCase(),
+          );
       return nameMatches || numberMatches;
     }).toList();
     return Container(
@@ -76,10 +76,10 @@ class _AllContactsState extends State<AllContacts> {
               controller: searchController,
               hintText: "search name or number..",
             ),
-            Gap(16),
-
+            Gap(24),
             Expanded(
               child: ListView.builder(
+                padding: EdgeInsets.all(0),
                 itemCount: searchResult.length,
                 itemBuilder: (context, index) => SearchBeneficiaries(
                   phoneNumber: searchResult[index].phoneNumber,

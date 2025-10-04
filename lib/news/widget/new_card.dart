@@ -2,19 +2,22 @@ import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
-class NewCard extends StatelessWidget {
-  final Function(bool)? isOpened;
+class NewCard extends StatefulWidget {
   final String title;
   final String newsInfo;
-  final bool isNewOpend;
+
   const NewCard({
     super.key,
-    required this.isOpened,
-    required this.isNewOpend,
     required this.newsInfo,
     required this.title,
   });
 
+  @override
+  State<NewCard> createState() => _NewCardState();
+}
+
+class _NewCardState extends State<NewCard> {
+  bool isOpened = false;
   @override
   @override
   Widget build(BuildContext context) {
@@ -38,24 +41,27 @@ class NewCard extends StatelessWidget {
           collapsedBackgroundColor: AppColors.offWhite,
           backgroundColor: AppColors.phoneNumberGrey.withValues(alpha: 0.2),
           title: Text(
-            title,
+            widget.title,
             style: subHeaders.copyWith(
               fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
           ),
-          trailing: isNewOpend
+          trailing: isOpened
               ? Icon(Icons.expand_less_outlined, color: AppColors.blue)
               : Image.asset(
                   "assets/expand_more.png",
                   height: 7,
                   color: AppColors.blue,
                 ),
-          onExpansionChanged: isOpened,
+          onExpansionChanged: (val) {
+            isOpened = val;
+            setState(() {});
+          },
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(textAlign: TextAlign.start, newsInfo)],
+              children: [Text(textAlign: TextAlign.start, widget.newsInfo)],
             ),
           ],
         ),

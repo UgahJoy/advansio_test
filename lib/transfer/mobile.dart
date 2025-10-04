@@ -1,7 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
+import 'package:advansio_test_mobile/transfer/widgets/all_contacts.dart';
 import 'package:advansio_test_mobile/transfer/widgets/recents_beneficiaries.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -25,24 +27,34 @@ class Mobile extends StatelessWidget {
       ),
     ];
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Gap(20),
-        Text(
-          "Recent",
-          style: subHeaders.copyWith(fontSize: 18, fontWeight: FontWeight.w700),
-        ),
-        Gap(8),
-        SizedBox(
-          height: context.deviceHeight * 0.16,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: recent.length,
-            itemBuilder: (context, index) => recent[index],
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gap(20),
+              Text(
+                "Recent",
+                style: subHeaders.copyWith(
+                  fontSize: 18,
+                ),
+              ),
+              Gap(8),
+              SizedBox(
+                height: context.deviceHeight * 0.16,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recent.length,
+                  itemBuilder: (context, index) => recent[index],
+                ),
+              ),
+              Gap(40),
+            ],
           ),
         ),
-        Gap(40),
+        AllContacts()
       ],
     );
   }

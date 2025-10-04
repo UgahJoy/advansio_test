@@ -3,6 +3,7 @@ import 'package:advansio_test_mobile/global_variables/global_variables.dart';
 import 'package:advansio_test_mobile/onboarding.dart';
 import 'package:advansio_test_mobile/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -21,12 +22,14 @@ class MyApp extends StatelessWidget {
       data: MediaQuery.of(
         context,
       ).copyWith(textScaler: TextScaler.linear(Platform.isIOS ? 1.02 : 1)),
-      child: MaterialApp(
-        theme: appTheme,
-        navigatorKey: navigatorKey,
-        scaffoldMessengerKey: scaffoldMessenger,
-        debugShowCheckedModeBanner: false,
-        home: const Onboarding(),
+      child: ProviderScope(
+        child: MaterialApp(
+          theme: appTheme,
+          navigatorKey: navigatorKey,
+          scaffoldMessengerKey: scaffoldMessenger,
+          debugShowCheckedModeBanner: false,
+          home: const Onboarding(),
+        ),
       ),
     );
   }

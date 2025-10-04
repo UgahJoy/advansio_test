@@ -17,10 +17,13 @@ class NewsScreen extends ConsumerStatefulWidget {
 
 class _NewsScreenState extends ConsumerState<NewsScreen> {
   final searchHelpController = TextEditingController();
+  final pageController = PageController();
   final List<String> newsSuffix = ["ng", "gh", "ao", "ne"];
   int currentIndex = 0;
   bool isCardOpened = false;
   void _handleSelection(int index) {
+    pageController.animateToPage(
+        curve: Curves.easeIn, index, duration: Duration(milliseconds: 200));
     setState(() {
       currentIndex = index;
     });
@@ -46,28 +49,19 @@ class _NewsScreenState extends ConsumerState<NewsScreen> {
             onChanged: _handleSelection,
           ),
           const Gap(30),
-          NewsBody(
-            countrySuffix: newsSuffix[currentIndex],
+          Expanded(
+            child: PageView.builder(
+                controller: pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: newsSuffix.length,
+                itemBuilder: (context, index) {
+                  return NewsBody(
+                    countrySuffix: newsSuffix[index],
+                  );
+                }),
           )
         ],
       ),
     );
   }
 }
-
- // void isNewsScreenOpened(int index) {
-  //   setState(() {
-  //     NewsScreenDaTum[index] = NewsScreenDaTum(
-  //         subText: NewsScreenDaTum[index].subText,
-  //         title: NewsScreenDaTum[index].title,
-  //         isOpened: !NewsScreenDaTum[index].isOpened);
-  //   });
-  // }
-// List<dynamic> searchNewsScreen() {
-  //   return NewsScreenDaTum.where(
-  //     (search) => search.title.toString().toLowerCase().contains(
-  //       searchHelpController.text.toLowerCase(),
-  //     ),
-  //   ).toList();
-  // }
- // 

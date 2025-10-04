@@ -19,21 +19,25 @@ class App {
     double? decorationThickness,
     String? fontFamily,
     TextOverflow? overflow,
-  }) => Theme.of(navigatorKey.currentState!.context).textTheme.titleMedium!
-      .copyWith(
-        color: color,
-        inherit: inherit,
-        height: height,
-        backgroundColor: backgroundColor,
-        fontSize: fontSize,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        locale: locale,
-        decorationStyle: decorationStyle,
-        decorationThickness: decorationThickness,
-        fontFamily: fontFamily,
-        overflow: overflow,
-      );
+  }) =>
+      Theme.of(navigatorKey.currentState!.context)
+          .textTheme
+          .titleMedium!
+          .copyWith(
+            color: color,
+            fontWeight: fontWeight,
+            inherit: inherit,
+            height: height,
+            backgroundColor: backgroundColor,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            wordSpacing: wordSpacing,
+            locale: locale,
+            decorationStyle: decorationStyle,
+            decorationThickness: decorationThickness,
+            fontFamily: fontFamily,
+            overflow: overflow,
+          );
 
   static TextStyle subHeaders({
     bool? inherit,
@@ -50,21 +54,25 @@ class App {
     double? decorationThickness,
     String? fontFamily,
     TextOverflow? overflow,
-  }) => Theme.of(navigatorKey.currentState!.context).textTheme.bodyMedium!
-      .copyWith(
-        color: color,
-        inherit: inherit,
-        height: height,
-        backgroundColor: backgroundColor,
-        fontSize: fontSize,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        locale: locale,
-        decorationStyle: decorationStyle,
-        decorationThickness: decorationThickness,
-        fontFamily: fontFamily,
-        overflow: overflow,
-      );
+  }) =>
+      Theme.of(navigatorKey.currentState!.context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(
+            fontWeight: fontWeight,
+            color: color,
+            inherit: inherit,
+            height: height,
+            backgroundColor: backgroundColor,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            wordSpacing: wordSpacing,
+            locale: locale,
+            decorationStyle: decorationStyle,
+            decorationThickness: decorationThickness,
+            fontFamily: fontFamily,
+            overflow: overflow,
+          );
 }
 
 TextStyle header = App.header();

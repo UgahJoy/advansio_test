@@ -36,6 +36,17 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       ActivityActionItems(
+        isLast: false,
+        color: AppColors.darkPrimaryColor,
+        image: "assets/news.png",
+        text: "News",
+        imageHeight: 45,
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NewsScreen()),
+        ),
+      ),
+      ActivityActionItems(
         color: AppColors.yellow,
         image: "assets/card.png",
         text: "My Card",
@@ -47,17 +58,6 @@ class _DashboardState extends State<Dashboard> {
         text: "Pay Loan",
         onTap: () {},
       ),
-      ActivityActionItems(
-        isLast: false,
-        color: AppColors.darkPrimaryColor,
-        image: "assets/news.png",
-        text: "News",
-        imageHeight: 45,
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => NewsScreen()),
-        ),
-      ),
     ];
     final double overlapAmount = context.deviceHeight * 0.13;
     return WillPopScope(
@@ -65,7 +65,6 @@ class _DashboardState extends State<Dashboard> {
         return false;
       },
       child: AppScaffold(
-        bottom: VerifciationCard(),
         safeAreaTop: false,
         scaffoldPadding: 0,
         extendBodyBehindAppBar: true,
@@ -74,7 +73,6 @@ class _DashboardState extends State<Dashboard> {
           elevation: 0,
           toolbarHeight: 0,
         ),
-
         body: Column(
           children: [
             DashboarHeader(),
@@ -119,6 +117,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             ),
+            VerifciationCard(),
           ],
         ),
       ),
