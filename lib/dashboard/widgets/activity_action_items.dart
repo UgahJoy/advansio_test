@@ -60,7 +60,7 @@ class ActivityActionItems extends StatelessWidget {
                   child: Image.asset(image, height: imageHeight ?? 12),
                 ),
               ),
-              Gap(24),
+              Gap(10),
               Text(text, style: TextStyle(fontSize: 13, color: AppColors.blue)),
             ],
           ),

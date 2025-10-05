@@ -2,6 +2,7 @@ import 'package:advansio_test_mobile/auth/sign_in.dart';
 import 'package:advansio_test_mobile/auth/success_page.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
+import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/widgets/agreement.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
 import 'package:advansio_test_mobile/widgets/app_rich_text.dart';
@@ -32,6 +33,7 @@ class _SignUpState extends State<SignUp> {
             Gap(20),
             Text(
               "Welcome!",
+              style: header,
             ),
             Gap(8),
             Text(

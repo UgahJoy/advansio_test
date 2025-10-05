@@ -26,7 +26,7 @@ class DashboarHeader extends StatelessWidget {
         Positioned(
           left: 28,
           right: 28,
-          top: context.deviceHeight * 0.27,
+          top: context.deviceHeight * 0.25,
           child: ChartCard(),
         ),
       ],

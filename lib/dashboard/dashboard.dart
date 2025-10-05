@@ -93,7 +93,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         Gap(20),
                         SizedBox(
-                          height: context.deviceHeight * 0.125,
+                          height: 110,
                           child: ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
@@ -101,7 +101,7 @@ class _DashboardState extends State<Dashboard> {
                             itemBuilder: (context, index) => actionItems[index],
                           ),
                         ),
-                        Gap(34),
+                        Gap(28),
                         Text(
                           "Complete Verification",
                           style: subHeaders.copyWith(
@@ -109,13 +109,13 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         Gap(12),
+                        VerifciationCard(),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            VerifciationCard(),
           ],
         ),
       ),

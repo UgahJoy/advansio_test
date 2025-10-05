@@ -112,6 +112,7 @@ class _BankState extends State<Bank> {
             ),
             instrcuction: "Proceed",
           ),
+          Gap(24),
         ],
       ),
     );

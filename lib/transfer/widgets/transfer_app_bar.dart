@@ -113,7 +113,7 @@ class _TransferAppBarState extends State<TransferAppBar> {
                       ),
                     ],
                   ),
-                  // Gap(24)
+                  Gap(24)
                 ],
               ),
             ),
