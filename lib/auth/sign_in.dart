@@ -45,7 +45,10 @@ class _SignInState extends ConsumerState<SignIn> {
               style: TextStyle(fontSize: 14),
             ),
             Gap(context.deviceHeight * 0.09),
-            AppTextfield(hintText: "Email", controller: emailController),
+            AppTextfield(
+                keyBoardType: TextInputType.emailAddress,
+                hintText: "Email",
+                controller: emailController),
             Gap(6),
             AppTextfield(
               isPwd: true,
