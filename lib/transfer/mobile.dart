@@ -54,7 +54,8 @@ class Mobile extends StatelessWidget {
             ],
           ),
         ),
-        AllContacts()
+        AllContacts(),
+        Gap(24),
       ],
     );
   }

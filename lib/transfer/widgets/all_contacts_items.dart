@@ -43,6 +43,7 @@ class SearchBeneficiaries extends StatelessWidget {
                     name,
                     style: TextStyle(
                       fontSize: 13,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.blue,
                     ),
                   ),
@@ -51,6 +52,7 @@ class SearchBeneficiaries extends StatelessWidget {
                     phoneNumber,
                     style: TextStyle(
                       fontSize: 12,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.phoneNumberGrey,
                     ),
                   ),

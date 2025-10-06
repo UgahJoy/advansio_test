@@ -1,5 +1,6 @@
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/shared_state/app_state.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_rich_text.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_alert.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_back_button.dart';
@@ -13,11 +14,13 @@ import 'package:gap/gap.dart';
 class SetPin extends ConsumerStatefulWidget {
   final String title;
   final String message;
+  final String? amount;
   final String buttonText;
   final Function(String) onTap;
   final bool showBackButton;
   const SetPin({
     super.key,
+    this.amount,
     required this.title,
     required this.message,
     required this.onTap,
@@ -56,14 +59,31 @@ class _SetPinState extends ConsumerState<SetPin> {
           ),
           Align(
             alignment: AlignmentGeometry.center,
-            child: Text(widget.message, style: TextStyle(fontSize: 12)),
+            child: widget.showBackButton
+                ? AppRichText(
+                    instruction: widget.amount ?? "",
+                    question: widget.message,
+                    onTap: () {})
+                : Text(widget.message, style: TextStyle(fontSize: 12)),
           ),
           Gap(context.deviceHeight * 0.04),
           CustomeKeyPad(
-            onCompleted: (val) {
-              widget.onTap(val);
-              setState(() {});
-            },
+            onCompleted: !widget.showBackButton
+                ? (val) {
+                    widget.onTap(pin);
+                    setState(() {});
+                    return;
+                  }
+                : (val) {
+                    var currentUser = ref.read(appState).currentLogedInUser;
+                    var currentUserPin = currentUser!.pin == pin;
+                    if (currentUserPin) {
+                      widget.onTap(pin);
+                      return;
+                    }
+                    AppAlerts.showError("Incorrect pin...");
+                    setState(() {});
+                  },
             onchanged: (val) {
               pin = val;
               setState(() {});
@@ -73,20 +93,30 @@ class _SetPinState extends ConsumerState<SetPin> {
           ),
           Gap(28),
           AppButton(
-              onPressed: () async {
-                if (pin.length != 4) {
-                  AppAlerts.showError("Pin too short...");
-                  return;
-                }
-                var currentUser = ref.read(appState).currentLogedInUser;
-                var currentUserPin = currentUser!.pin == pin;
-                if (currentUserPin) {
-                  widget.onTap(pin);
-                  return;
-                }
-                AppAlerts.showError("Incorrect pin...");
-                return;
-              },
+              onPressed: widget.showBackButton
+                  ? () {
+                      if (pin.length != 4) {
+                        AppAlerts.showError("Pin too short...");
+                        return;
+                      }
+                      widget.onTap(pin);
+
+                      setState(() {});
+                    }
+                  : () async {
+                      if (pin.length != 4) {
+                        AppAlerts.showError("Pin too short...");
+                        return;
+                      }
+                      var currentUser = ref.read(appState).currentLogedInUser;
+                      var currentUserPin = currentUser!.pin == pin;
+                      if (currentUserPin) {
+                        widget.onTap(pin);
+                        return;
+                      }
+                      AppAlerts.showError("Incorrect pin...");
+                      return;
+                    },
               instrcuction: widget.buttonText),
         ],
       ),

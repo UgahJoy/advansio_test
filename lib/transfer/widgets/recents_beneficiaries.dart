@@ -54,6 +54,7 @@ class RecentBeneficiaries extends StatelessWidget {
               name,
               style: TextStyle(
                 fontSize: 13,
+                fontWeight: FontWeight.w700,
                 color: AppColors.blue,
               ),
             ),
@@ -62,6 +63,7 @@ class RecentBeneficiaries extends StatelessWidget {
               "+090078601",
               style: TextStyle(
                 fontSize: 12,
+                fontWeight: FontWeight.w700,
                 color: AppColors.phoneNumberGrey,
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:advansio_test_mobile/dashboard/dashboard.dart';
 import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/helpers/app_router.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_alert.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/transfer/widgets/accounts_bottom_sheet.dart';
@@ -87,24 +88,33 @@ class _BankState extends State<Bank> {
           AppTextfield(controller: narrationController, hintText: "Narration"),
           Gap(context.deviceHeight * 0.1),
           AppButton(
-            onPressed: () => AppRouter.navigateTo(SetPin(
-              showBackButton: true,
-              onTap: (val) {
-                AppRouter.replaceWith(SuccessPage(
-                  onPressed: () => AppRouter.clearAllAndPush(Dashboard()),
-                  title: "Transfer completed successfully!",
-                  message: "Thanks for choosing us",
-                ));
-              },
-              title: "Enter your PIN",
-              message: "Confirm transfer of ${amountController.text}",
-              buttonText: "Confirm",
-            )),
+            onPressed: proceed,
             instrcuction: "Proceed",
           ),
           Gap(24),
         ],
       ),
     );
+  }
+
+  void proceed() {
+    if (amountController.text.isEmpty || accoutNoController.text.isEmpty) {
+      AppAlerts.showError("Please select account");
+      return;
+    }
+    AppRouter.navigateTo(SetPin(
+      showBackButton: true,
+      onTap: (val) {
+        AppRouter.replaceWith(SuccessPage(
+          onPressed: () => AppRouter.clearAllAndPush(Dashboard()),
+          title: "Transfer completed successfully!",
+          message: "Thanks for choosing us",
+        ));
+      },
+      title: "Enter your PIN",
+      message: "Confirm transfer of",
+      buttonText: "Confirm",
+      amount: amountController.text,
+    ));
   }
 }

@@ -100,11 +100,17 @@ class _AppTextfieldState extends State<AppTextfield> {
                       isVisible = !isVisible;
                     });
                   },
-                  child: Padding(
-                    padding: EdgeInsets.all(isVisible ? 20 : 6),
+                  child: Container(
+                    height: 11,
+                    width: 11,
+                    padding: EdgeInsets.all(isVisible ? 15 : 14),
                     child: isVisible
-                        ? Image.asset("assets/visibility_on.png", height: 11)
-                        : Image.asset("assets/visibility_off.png", height: 11),
+                        ? Image.asset(
+                            "assets/visibility_on.png",
+                          )
+                        : Image.asset(
+                            "assets/visibility_off.png",
+                          ),
                   ),
                 )
               : Padding(

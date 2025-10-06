@@ -37,7 +37,10 @@ class ProfileItem extends StatelessWidget {
             ),
             Text(
               "Available Credit",
-              style: TextStyle(color: AppColors.white, fontSize: 12),
+              style: TextStyle(
+                color: AppColors.white.withValues(alpha: 0.8),
+                fontSize: 13,
+              ),
             ),
           ],
         ),

@@ -25,12 +25,14 @@ class _NewsBodyState extends ConsumerState<NewsBody> {
   @override
   void initState() {
     isBusy = ref.read(appState).allNews[widget.countrySuffix]?.isEmpty ?? true;
-    ref.read(globalRepository).fetchNews(widget.countrySuffix).then((val) {
-      isBusy = false;
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    if (isBusy) {
+      ref.read(globalRepository).fetchNews(widget.countrySuffix).then((val) {
+        isBusy = false;
+        if (mounted) {
+          setState(() {});
+        }
+      });
+    }
 
     super.initState();
   }

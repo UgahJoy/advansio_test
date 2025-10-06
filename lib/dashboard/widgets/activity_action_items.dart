@@ -28,7 +28,7 @@ class ActivityActionItems extends StatelessWidget {
         padding: const EdgeInsets.only(right: 4),
         child: Container(
           width: 107,
-          margin: EdgeInsets.only(right: 8),
+          margin: EdgeInsets.only(right: 6),
           padding: EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
             color: AppColors.white,
@@ -36,7 +36,7 @@ class ActivityActionItems extends StatelessWidget {
             boxShadow: [
               if (isLast) ...[
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
+                  color: Colors.black.withValues(alpha: 0.12),
                   blurRadius: 12,
                   spreadRadius: 0,
                   offset: const Offset(10, 0),

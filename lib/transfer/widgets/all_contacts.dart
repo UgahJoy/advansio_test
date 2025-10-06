@@ -19,19 +19,19 @@ class _AllContactsState extends State<AllContacts> {
   List<DataTum> searches = [
     DataTum(
       image: "assets/hailey.png",
-      name: "Hailey",
+      name: "Hailey Sanders",
       isLast: true,
       phoneNumber: "+028219121",
     ),
     DataTum(
       image: "assets/zayn.png",
-      name: "Zayn",
+      name: "Zayn Michel",
       isLast: true,
       phoneNumber: "+090078601",
     ),
     DataTum(
       image: "assets/thomas.png",
-      name: "Thomas",
+      name: "Thomas Denver",
       isLast: false,
       phoneNumber: "+013119121",
     ),
@@ -59,7 +59,7 @@ class _AllContactsState extends State<AllContacts> {
             Text(
               "All contacts",
               style: subHeaders.copyWith(
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
             Gap(16),
@@ -68,7 +68,7 @@ class _AllContactsState extends State<AllContacts> {
                 setState(() {});
               },
               showPrefixIcon: true,
-              hintTextfontSize: 14,
+              hintTextfontSize: 13,
               hintTextFontWeight: FontWeight.w700,
               hintTextColor: AppColors.phoneNumberGrey,
               prefixIcon: Image.asset("assets/search.png", height: 16),
@@ -78,6 +78,8 @@ class _AllContactsState extends State<AllContacts> {
             Gap(24),
             Expanded(
               child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.all(0),
                 itemCount: searchResult.length,
                 itemBuilder: (context, index) => SearchBeneficiaries(

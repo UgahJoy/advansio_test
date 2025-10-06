@@ -63,6 +63,8 @@ class ChartCard extends StatelessWidget {
             child: Text(
               "Tell me more",
               style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
                 decoration: TextDecoration.underline,
                 color: AppColors.primaryColor,
               ),
