@@ -2,7 +2,7 @@ import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/transfer/widgets/tab_selectors.dart';
-import 'package:advansio_test_mobile/widgets/app_inkwell.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_inkwell.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

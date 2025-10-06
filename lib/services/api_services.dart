@@ -14,6 +14,8 @@ class ApiServices {
   Future<dynamic> getRequst({bool isFull = false}) async {
     showProgress();
     try {
+      _client.options.connectTimeout = Duration(seconds: _timeout);
+      _client.options.receiveTimeout = Duration(seconds: _timeout);
       final url = isFull ? key : _baseUrl + key;
       var response = await _client.get(
         url,
@@ -26,35 +28,6 @@ class ApiServices {
       return "failed";
     } catch (ex) {
       log("General Error on GET: ${ex.toString()}");
-      return "failed";
-    } finally {
-      hideProgresss();
-    }
-  }
-
-  Future<dynamic> postRequst({
-    required dynamic data,
-    bool isFull = false,
-  }) async {
-    _client.options.connectTimeout = Duration(seconds: _timeout);
-    _client.options.receiveTimeout = Duration(seconds: _timeout);
-
-    final url = isFull ? key : _baseUrl + key;
-
-    try {
-      final headers = await _getHeader();
-
-      var response = await _client.post(
-        url,
-        data: data,
-        options: Options(headers: headers),
-      );
-      return response.data;
-    } on DioException catch (ex) {
-      log("General Error on GET: ${ex.toString()}");
-      return "failed";
-    } catch (ex) {
-      log("General Error on POST: ${ex.toString()}");
       return "failed";
     } finally {
       hideProgresss();

@@ -1,10 +1,10 @@
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
-import 'package:advansio_test_mobile/widgets/app_alert.dart';
-import 'package:advansio_test_mobile/widgets/app_back_button.dart';
-import 'package:advansio_test_mobile/widgets/app_button.dart';
-import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
-import 'package:advansio_test_mobile/widgets/custome_key_pad.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_alert.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_back_button.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_button.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_scaffold.dart';
+import 'package:advansio_test_mobile/shared_widgets/custome_key_pad.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

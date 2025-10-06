@@ -1,5 +1,5 @@
 import 'package:advansio_test_mobile/global_variables/global_variables.dart';
-import 'package:advansio_test_mobile/widgets/app_loader.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_loader.dart';
 import 'package:flutter/material.dart';
 
 void showProgress(BuildContext context) {

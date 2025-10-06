@@ -3,7 +3,7 @@ import 'package:advansio_test_mobile/theme/app_theme.dart';
 import 'package:advansio_test_mobile/transfer/bank.dart';
 import 'package:advansio_test_mobile/transfer/mobile.dart';
 import 'package:advansio_test_mobile/transfer/widgets/transfer_app_bar.dart';
-import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class Transfer extends StatefulWidget {

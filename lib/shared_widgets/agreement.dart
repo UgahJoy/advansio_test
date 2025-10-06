@@ -19,7 +19,6 @@ class Agreement extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 18.0),
           child: SizedBox(
             width: 40,
-
             child: Checkbox(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),

@@ -18,7 +18,6 @@ class _AppButtonState extends State<AppButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: widget.onPressed,
-      //style: appTheme.elevatedButtonTheme,
       child: Text(textAlign: TextAlign.center, widget.instrcuction),
     );
   }

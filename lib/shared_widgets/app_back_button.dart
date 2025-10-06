@@ -1,4 +1,4 @@
-import 'package:advansio_test_mobile/widgets/app_inkwell.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_inkwell.dart';
 import 'package:flutter/material.dart';
 
 class AppBackButton extends StatelessWidget {

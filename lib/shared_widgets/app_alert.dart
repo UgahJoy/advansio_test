@@ -55,8 +55,6 @@ class AppAlerts {
         )).show(navigatorKey.currentContext!);
   }
 
-  static void showInfo() {}
-
   static void showError(String message) {
     if (message.isEmpty) return;
     Flushbar(

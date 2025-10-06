@@ -3,7 +3,7 @@
 import 'package:advansio_test_mobile/news/news_body.dart';
 import 'package:advansio_test_mobile/news/widget/news_selectors.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
-import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';

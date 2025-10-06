@@ -10,7 +10,7 @@ import 'package:advansio_test_mobile/news/news_screen.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/transfer/transfer.dart';
-import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
+import 'package:advansio_test_mobile/shared_widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
