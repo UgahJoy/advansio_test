@@ -87,24 +87,19 @@ class _BankState extends State<Bank> {
           AppTextfield(controller: narrationController, hintText: "Narration"),
           Gap(context.deviceHeight * 0.1),
           AppButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SetPin(
-                  showBackButton: true,
-                  onTap: (val) {
-                    AppRouter.replaceWith(SuccessPage(
-                      onPressed: () => AppRouter.clearAllAndPush(Dashboard()),
-                      title: "Transfer completed successfully!",
-                      message: "Thanks for choosing us",
-                    ));
-                  },
-                  title: "Enter your PIN",
-                  message: "Confirm transfer of ${amountController.text}",
-                  buttonText: "Confirm",
-                ),
-              ),
-            ),
+            onPressed: () => AppRouter.navigateTo(SetPin(
+              showBackButton: true,
+              onTap: (val) {
+                AppRouter.replaceWith(SuccessPage(
+                  onPressed: () => AppRouter.clearAllAndPush(Dashboard()),
+                  title: "Transfer completed successfully!",
+                  message: "Thanks for choosing us",
+                ));
+              },
+              title: "Enter your PIN",
+              message: "Confirm transfer of ${amountController.text}",
+              buttonText: "Confirm",
+            )),
             instrcuction: "Proceed",
           ),
           Gap(24),

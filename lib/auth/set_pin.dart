@@ -1,4 +1,5 @@
 import 'package:advansio_test_mobile/helpers/extensions.dart';
+import 'package:advansio_test_mobile/shared_state/app_state.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_alert.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_back_button.dart';
@@ -6,9 +7,10 @@ import 'package:advansio_test_mobile/shared_widgets/app_button.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_scaffold.dart';
 import 'package:advansio_test_mobile/shared_widgets/custome_key_pad.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class SetPin extends StatefulWidget {
+class SetPin extends ConsumerStatefulWidget {
   final String title;
   final String message;
   final String buttonText;
@@ -24,10 +26,10 @@ class SetPin extends StatefulWidget {
   });
 
   @override
-  State<SetPin> createState() => _SetPinState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SetPinState();
 }
 
-class _SetPinState extends State<SetPin> {
+class _SetPinState extends ConsumerState<SetPin> {
   final focusNode = FocusNode();
   final keyController = TextEditingController();
   String pin = "";
@@ -71,12 +73,19 @@ class _SetPinState extends State<SetPin> {
           ),
           Gap(28),
           AppButton(
-              onPressed: () {
+              onPressed: () async {
                 if (pin.length != 4) {
                   AppAlerts.showError("Pin too short...");
                   return;
                 }
-                widget.onTap(pin);
+                var currentUser = ref.read(appState).currentLogedInUser;
+                var currentUserPin = currentUser!.pin == pin;
+                if (currentUserPin) {
+                  widget.onTap(pin);
+                  return;
+                }
+                AppAlerts.showError("Incorrect pin...");
+                return;
               },
               instrcuction: widget.buttonText),
         ],

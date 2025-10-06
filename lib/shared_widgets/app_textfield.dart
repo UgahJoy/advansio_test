@@ -94,14 +94,14 @@ class _AppTextfieldState extends State<AppTextfield> {
                 )
               : null,
           suffixIcon: widget.isPwd == true
-              ? Padding(
-                  padding: EdgeInsets.all(isVisible ? 20 : 6),
-                  child: AppInkWell(
-                    onTap: () {
-                      setState(() {
-                        isVisible = !isVisible;
-                      });
-                    },
+              ? AppInkWell(
+                  onTap: () {
+                    setState(() {
+                      isVisible = !isVisible;
+                    });
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(isVisible ? 20 : 6),
                     child: isVisible
                         ? Image.asset("assets/visibility_on.png", height: 11)
                         : Image.asset("assets/visibility_off.png", height: 11),

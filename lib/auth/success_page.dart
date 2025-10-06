@@ -1,3 +1,4 @@
+import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_button.dart';
@@ -43,6 +44,7 @@ class _SuccessPageState extends State<SuccessPage> {
           ),
           Gap(context.deviceHeight * 0.22),
           AppButton(onPressed: widget.onPressed, instrcuction: "Continue"),
+          Gap(screenPadding),
         ],
       ),
     );

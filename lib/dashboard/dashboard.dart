@@ -5,6 +5,7 @@ import 'package:advansio_test_mobile/dashboard/widgets/chart_card.dart';
 import 'package:advansio_test_mobile/dashboard/widgets/dashboar_header.dart';
 import 'package:advansio_test_mobile/dashboard/widgets/verification_card.dart';
 import 'package:advansio_test_mobile/global_variables/constants.dart';
+import 'package:advansio_test_mobile/helpers/app_router.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/news/news_screen.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
@@ -31,20 +32,14 @@ class _DashboardState extends State<Dashboard> {
         color: AppColors.primaryColor,
         image: "assets/transfer.png",
         text: "Transfer",
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Transfer()),
-        ),
+        onTap: () => AppRouter.navigateTo(Transfer()),
       ),
       ActivityActionItems(
         color: AppColors.darkPrimaryColor,
         image: "assets/news.png",
         text: "News",
         imageHeight: 45,
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => NewsScreen()),
-        ),
+        onTap: () => AppRouter.navigateTo(NewsScreen()),
       ),
       ActivityActionItems(
         color: AppColors.yellow,
@@ -128,6 +123,7 @@ class _DashboardState extends State<Dashboard> {
                               ),
                               Gap(12),
                               VerifciationCard(),
+                              Gap(screenPadding),
                             ],
                           ),
                         ),

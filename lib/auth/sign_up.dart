@@ -102,7 +102,7 @@ class _SignUpState extends ConsumerState<SignUp> {
       return;
     }
     if (isChecked == false) {
-      AppAlerts.showError("Please agree to out Terms and Conditions...");
+      AppAlerts.showError("Please agree to our Terms and Conditions...");
       return;
     }
     var allRegisteredUser = ref.read(authRepository).getRegisteredUsers();
