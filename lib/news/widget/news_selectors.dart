@@ -1,5 +1,4 @@
 import 'package:advansio_test_mobile/global_variables/constants.dart';
-import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/shared_widgets/app_inkwell.dart';
@@ -25,7 +24,6 @@ class _NewsSelectorsState extends State<NewsSelectors> {
     return Column(
       children: [
         Container(
-          height: context.deviceHeight * 0.3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
@@ -116,6 +114,7 @@ class _NewsSelectorsState extends State<NewsSelectors> {
                         ),
                       ],
                     ),
+                    Gap(24),
                   ],
                 ),
               ),

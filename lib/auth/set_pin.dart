@@ -39,75 +39,43 @@ class _SetPinState extends ConsumerState<SetPin> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (widget.showBackButton) ...[Gap(28), AppBackButton()],
-          Gap(
-            widget.showBackButton
-                ? context.deviceHeight * 0.07
-                : context.deviceHeight * 0.12,
-          ),
-          Align(
-            alignment: AlignmentGeometry.center,
-            child: Text(
-              widget.title,
-              style: header.copyWith(
-                fontSize: 26,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (widget.showBackButton) ...[Gap(28), AppBackButton()],
+            Gap(
+              widget.showBackButton
+                  ? context.deviceHeight * 0.07
+                  : context.deviceHeight * 0.12,
+            ),
+            Align(
+              alignment: AlignmentGeometry.center,
+              child: Text(
+                widget.title,
+                style: header.copyWith(
+                  fontSize: 26,
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: AlignmentGeometry.center,
-            child: widget.showBackButton
-                ? AppRichText(
-                    instruction: widget.amount ?? "",
-                    question: widget.message,
-                    onTap: () {})
-                : Text(widget.message, style: TextStyle(fontSize: 12)),
-          ),
-          Gap(context.deviceHeight * 0.04),
-          CustomeKeyPad(
-            onCompleted: !widget.showBackButton
-                ? (val) {
-                    widget.onTap(pin);
-                    setState(() {});
-                    return;
-                  }
-                : (val) {
-                    var currentUser = ref.read(appState).currentLogedInUser;
-                    var currentUserPin = currentUser!.pin == pin;
-                    if (currentUserPin) {
+            Align(
+              alignment: AlignmentGeometry.center,
+              child: widget.showBackButton
+                  ? AppRichText(
+                      instruction: widget.amount ?? "",
+                      question: widget.message,
+                      onTap: () {})
+                  : Text(widget.message, style: TextStyle(fontSize: 12)),
+            ),
+            Gap(context.deviceHeight * 0.04),
+            CustomeKeyPad(
+              onCompleted: !widget.showBackButton
+                  ? (val) {
                       widget.onTap(pin);
+                      setState(() {});
                       return;
                     }
-                    AppAlerts.showError("Incorrect pin...");
-                    setState(() {});
-                  },
-            onchanged: (val) {
-              pin = val;
-              setState(() {});
-            },
-            controller: keyController,
-            focusNode: focusNode,
-          ),
-          Gap(28),
-          AppButton(
-              onPressed: widget.showBackButton
-                  ? () {
-                      if (pin.length != 4) {
-                        AppAlerts.showError("Pin too short...");
-                        return;
-                      }
-                      widget.onTap(pin);
-
-                      setState(() {});
-                    }
-                  : () async {
-                      if (pin.length != 4) {
-                        AppAlerts.showError("Pin too short...");
-                        return;
-                      }
+                  : (val) {
                       var currentUser = ref.read(appState).currentLogedInUser;
                       var currentUserPin = currentUser!.pin == pin;
                       if (currentUserPin) {
@@ -115,10 +83,45 @@ class _SetPinState extends ConsumerState<SetPin> {
                         return;
                       }
                       AppAlerts.showError("Incorrect pin...");
-                      return;
+                      setState(() {});
                     },
-              instrcuction: widget.buttonText),
-        ],
+              onchanged: (val) {
+                pin = val;
+                setState(() {});
+              },
+              controller: keyController,
+              focusNode: focusNode,
+            ),
+            Gap(28),
+            AppButton(
+                onPressed: widget.showBackButton
+                    ? () {
+                        if (pin.length != 4) {
+                          AppAlerts.showError("Pin too short...");
+                          return;
+                        }
+                        widget.onTap(pin);
+
+                        setState(() {});
+                      }
+                    : () async {
+                        if (pin.length != 4) {
+                          AppAlerts.showError("Pin too short...");
+                          return;
+                        }
+                        var currentUser = ref.read(appState).currentLogedInUser;
+                        var currentUserPin = currentUser!.pin == pin;
+                        if (currentUserPin) {
+                          widget.onTap(pin);
+                          return;
+                        }
+                        AppAlerts.showError("Incorrect pin...");
+                        return;
+                      },
+                instrcuction: widget.buttonText),
+            Gap(28),
+          ],
+        ),
       ),
     );
   }

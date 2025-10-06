@@ -21,33 +21,33 @@ class CustomeKeyPad extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: context.deviceWidth,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowGrey.withValues(alpha: 0.15),
-            blurRadius: 60,
-            spreadRadius: 0,
-            offset: const Offset(0, 30),
+    return Column(
+      children: [
+        Container(
+          width: context.deviceWidth,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.shadowGrey.withValues(alpha: 0.05),
+                blurRadius: 8,
+                spreadRadius: 0,
+                offset: const Offset(0, 30),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Column(
-        children: [
-          AppPinFiled(
+          child: AppPinFiled(
             controller: controller,
             onChanged: onchanged,
             onCompleted: onCompleted,
           ),
-          NumberKeypad(
-            controller: controller,
-            focusNode: focusNode,
-            onchanged: onchanged,
-            onCompleted: onCompleted,
-          ),
-        ],
-      ),
+        ),
+        NumberKeypad(
+          controller: controller,
+          focusNode: focusNode,
+          onchanged: onchanged,
+          onCompleted: onCompleted,
+        ),
+      ],
     );
   }
 }
@@ -55,7 +55,6 @@ class CustomeKeyPad extends StatelessWidget {
 class NumberKeypad extends StatelessWidget {
   final FocusNode focusNode;
   final TextEditingController controller;
-  // ADDED required properties to the constructor
   final Function(String) onchanged;
   final Function(String) onCompleted;
 
@@ -90,11 +89,10 @@ class NumberKeypad extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                const Expanded(child: SizedBox()), // Empty space for alignment
+                const Expanded(child: SizedBox()),
                 Expanded(
                   child: KeyBoardItem(text: "0", onTap: () => _onKeyTap("0")),
                 ),
-                // ADDED: Backspace/Delete Key
                 Expanded(
                   child: KeyBoardItem(
                     icon: Icons.backspace_outlined,
@@ -196,7 +194,7 @@ class KeyBoardItem extends StatelessWidget {
   const KeyBoardItem({
     super.key,
     this.text,
-    this.icon, // Accept optional icon
+    this.icon,
     required this.onTap,
   }) : assert(
           text != null || icon != null,

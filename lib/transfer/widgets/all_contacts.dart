@@ -1,5 +1,4 @@
 import 'package:advansio_test_mobile/global_variables/constants.dart';
-import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/transfer/widgets/all_contacts_items.dart';
@@ -48,7 +47,6 @@ class _AllContactsState extends State<AllContacts> {
       return nameMatches || numberMatches;
     }).toList();
     return Container(
-      height: context.deviceHeight * 0.45,
       decoration: BoxDecoration(color: AppColors.white),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenPadding),
@@ -59,7 +57,7 @@ class _AllContactsState extends State<AllContacts> {
             Text(
               "All contacts",
               style: subHeaders.copyWith(
-                fontSize: 16,
+                fontSize: 15,
               ),
             ),
             Gap(16),
@@ -76,18 +74,16 @@ class _AllContactsState extends State<AllContacts> {
               hintText: "search name or number..",
             ),
             Gap(24),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.all(0),
-                itemCount: searchResult.length,
-                itemBuilder: (context, index) => SearchBeneficiaries(
-                  phoneNumber: searchResult[index].phoneNumber,
-                  name: searchResult[index].name,
-                  image: searchResult[index].image,
-                  isLast: searchResult[index].isLast,
-                ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.all(0),
+              itemCount: searchResult.length,
+              itemBuilder: (context, index) => SearchBeneficiaries(
+                phoneNumber: searchResult[index].phoneNumber,
+                name: searchResult[index].name,
+                image: searchResult[index].image,
+                isLast: searchResult[index].isLast,
               ),
             ),
           ],

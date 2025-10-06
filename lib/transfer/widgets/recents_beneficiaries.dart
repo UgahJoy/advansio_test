@@ -7,11 +7,9 @@ class RecentBeneficiaries extends StatelessWidget {
   final String image;
   final Function() onTap;
   final String name;
-  final double? imageHeight;
   const RecentBeneficiaries({
     super.key,
     required this.image,
-    this.imageHeight,
     required this.onTap,
     required this.name,
   });

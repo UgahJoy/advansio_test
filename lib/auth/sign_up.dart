@@ -81,6 +81,7 @@ class _SignUpState extends ConsumerState<SignUp> {
               instruction: "- Sign In",
               question: "Already have an account?",
             ),
+            Gap(30),
           ],
         ),
       ),

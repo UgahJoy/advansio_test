@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:advansio_test_mobile/global_variables/constants.dart';
-import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
 import 'package:advansio_test_mobile/transfer/widgets/all_contacts.dart';
 import 'package:advansio_test_mobile/transfer/widgets/recents_beneficiaries.dart';
@@ -37,12 +36,12 @@ class Mobile extends StatelessWidget {
               Text(
                 "Recent",
                 style: subHeaders.copyWith(
-                  fontSize: 18,
+                  fontSize: 15,
                 ),
               ),
               Gap(8),
               SizedBox(
-                height: context.deviceHeight * 0.16,
+                height: 140,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
@@ -50,7 +49,7 @@ class Mobile extends StatelessWidget {
                   itemBuilder: (context, index) => recent[index],
                 ),
               ),
-              Gap(40),
+              Gap(20),
             ],
           ),
         ),
