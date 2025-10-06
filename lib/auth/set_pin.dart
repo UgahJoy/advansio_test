@@ -1,5 +1,6 @@
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
+import 'package:advansio_test_mobile/widgets/app_alert.dart';
 import 'package:advansio_test_mobile/widgets/app_back_button.dart';
 import 'package:advansio_test_mobile/widgets/app_button.dart';
 import 'package:advansio_test_mobile/widgets/app_scaffold.dart';
@@ -11,7 +12,7 @@ class SetPin extends StatefulWidget {
   final String title;
   final String message;
   final String buttonText;
-  final Function() onTap;
+  final Function(String) onTap;
   final bool showBackButton;
   const SetPin({
     super.key,
@@ -29,6 +30,7 @@ class SetPin extends StatefulWidget {
 class _SetPinState extends State<SetPin> {
   final focusNode = FocusNode();
   final keyController = TextEditingController();
+  String pin = "";
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -56,13 +58,27 @@ class _SetPinState extends State<SetPin> {
           ),
           Gap(context.deviceHeight * 0.04),
           CustomeKeyPad(
-            onCompleted: (val) {},
-            onchanged: (val) {},
+            onCompleted: (val) {
+              widget.onTap(val);
+              setState(() {});
+            },
+            onchanged: (val) {
+              pin = val;
+              setState(() {});
+            },
             controller: keyController,
             focusNode: focusNode,
           ),
           Gap(28),
-          AppButton(onPressed: widget.onTap, instrcuction: widget.buttonText),
+          AppButton(
+              onPressed: () {
+                if (pin.length != 4) {
+                  AppAlerts.showError("Pin too short...");
+                  return;
+                }
+                widget.onTap(pin);
+              },
+              instrcuction: widget.buttonText),
         ],
       ),
     );

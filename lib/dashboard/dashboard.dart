@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:advansio_test_mobile/dashboard/widgets/activity_action_items.dart';
+import 'package:advansio_test_mobile/dashboard/widgets/chart_card.dart';
 import 'package:advansio_test_mobile/dashboard/widgets/dashboar_header.dart';
 import 'package:advansio_test_mobile/dashboard/widgets/verification_card.dart';
 import 'package:advansio_test_mobile/global_variables/constants.dart';
@@ -36,7 +37,6 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       ActivityActionItems(
-        isLast: false,
         color: AppColors.darkPrimaryColor,
         image: "assets/news.png",
         text: "News",
@@ -56,10 +56,11 @@ class _DashboardState extends State<Dashboard> {
         color: AppColors.loanGreen,
         image: "assets/pay_laon.png",
         text: "Pay Loan",
+        isLast: false,
         onTap: () {},
       ),
     ];
-    final double overlapAmount = context.deviceHeight * 0.13;
+
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -73,47 +74,67 @@ class _DashboardState extends State<Dashboard> {
           elevation: 0,
           toolbarHeight: 0,
         ),
-        body: Column(
+        body: Stack(
           children: [
+            SizedBox(
+              height: context.deviceHeight,
+              width: context.deviceWidth,
+            ),
             DashboarHeader(),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(top: overlapAmount),
-                  child: Padding(
+            Positioned(
+              top: context.deviceHeight * 0.26,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: screenPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Activity",
-                          style: subHeaders.copyWith(
-                            fontSize: 18,
+                    child: ChartCard(),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: screenPadding),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Activity",
+                                style: subHeaders.copyWith(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Gap(20),
+                              SizedBox(
+                                height: 110,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: actionItems.length,
+                                  itemBuilder: (context, index) =>
+                                      actionItems[index],
+                                ),
+                              ),
+                              Gap(28),
+                              Text(
+                                "Complete Verification",
+                                style: subHeaders.copyWith(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Gap(12),
+                              VerifciationCard(),
+                            ],
                           ),
                         ),
-                        Gap(20),
-                        SizedBox(
-                          height: 110,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: actionItems.length,
-                            itemBuilder: (context, index) => actionItems[index],
-                          ),
-                        ),
-                        Gap(28),
-                        Text(
-                          "Complete Verification",
-                          style: subHeaders.copyWith(
-                            fontSize: 18,
-                          ),
-                        ),
-                        Gap(12),
-                        VerifciationCard(),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
           ],

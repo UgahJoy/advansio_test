@@ -1,4 +1,4 @@
-import 'package:advansio_test_mobile/api_requests/api_requests.dart';
+import 'package:advansio_test_mobile/services/api_services.dart';
 import 'package:advansio_test_mobile/global_variables/constants.dart';
 import 'package:advansio_test_mobile/model/news_model.dart';
 import 'package:advansio_test_mobile/shared_state/app_state.dart';
@@ -10,7 +10,7 @@ class GlobalRepository {
   final Ref ref;
   GlobalRepository(this.ref);
   Future<void> fetchNews(String countrySuffix) async {
-    var response = await ApiRequests(
+    var response = await ApiServices(
             key: "$newsRoute$countrySuffix", showProgressLoader: false)
         .getRequst(isFull: true);
     if (response == "failed") {

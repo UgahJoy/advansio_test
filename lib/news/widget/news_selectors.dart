@@ -37,80 +37,87 @@ class _NewsSelectorsState extends State<NewsSelectors> {
               colors: [AppColors.primaryColor, AppColors.primaryColorGradient],
             ),
           ),
-          child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenPadding),
-              child: Column(
-                children: [
-                  Gap(50),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AppInkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Image.asset(
-                          "assets/back_arrow.png",
-                          height: 20,
-                          color: AppColors.white,
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.25),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenPadding),
+                child: Column(
+                  children: [
+                    Gap(50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppInkWell(
+                          onTap: () => Navigator.pop(context),
+                          child: Image.asset(
+                            "assets/back_arrow.png",
+                            height: 20,
+                            color: AppColors.white,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "News",
-                        style: subHeaders.copyWith(
-                          color: AppColors.white,
+                        Text(
+                          "News",
+                          style: subHeaders.copyWith(
+                            color: AppColors.white,
+                          ),
                         ),
-                      ),
-                      Gap(20),
-                    ],
-                  ),
-                  Gap(40),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: NewSelectors(
-                          text: "Nigeria",
-                          onTap: () {
-                            widget.onChanged(0);
-                          },
-                          index: 0,
-                          currentIndex: widget.currentIndex,
+                        Gap(20),
+                      ],
+                    ),
+                    Gap(40),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: NewSelectors(
+                            text: "Nigeria",
+                            onTap: () {
+                              widget.onChanged(0);
+                            },
+                            index: 0,
+                            currentIndex: widget.currentIndex,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: NewSelectors(
-                          text: "Ghana",
-                          onTap: () {
-                            widget.onChanged(1);
-                          },
-                          index: 1,
-                          currentIndex: widget.currentIndex,
+                        Expanded(
+                          child: NewSelectors(
+                            text: "Ghana",
+                            onTap: () {
+                              widget.onChanged(1);
+                            },
+                            index: 1,
+                            currentIndex: widget.currentIndex,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: NewSelectors(
-                          text: "Angola",
-                          onTap: () {
-                            setState(() {
-                              widget.onChanged(2);
-                            });
-                          },
-                          index: 2,
-                          currentIndex: widget.currentIndex,
+                        Expanded(
+                          child: NewSelectors(
+                            text: "Angola",
+                            onTap: () {
+                              setState(() {
+                                widget.onChanged(2);
+                              });
+                            },
+                            index: 2,
+                            currentIndex: widget.currentIndex,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: NewSelectors(
-                          text: "Niger",
-                          onTap: () {
-                            widget.onChanged(3);
-                          },
-                          index: 3,
-                          currentIndex: widget.currentIndex,
+                        Expanded(
+                          child: NewSelectors(
+                            text: "Niger",
+                            onTap: () {
+                              widget.onChanged(3);
+                            },
+                            index: 3,
+                            currentIndex: widget.currentIndex,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -18,6 +18,7 @@ class AppTextfield extends StatefulWidget {
   final bool showPrefixIcon;
   final bool readOnly;
   final Function(String)? onChanged;
+  final TextInputType? keyBoardType;
   const AppTextfield({
     super.key,
     this.filledColor,
@@ -33,6 +34,7 @@ class AppTextfield extends StatefulWidget {
     this.hintTextFontWeight,
     required this.controller,
     required this.hintText,
+    this.keyBoardType,
     this.isObscureText = false,
   });
 
@@ -66,6 +68,7 @@ class _AppTextfieldState extends State<AppTextfield> {
     return SizedBox(
       height: 50,
       child: TextFormField(
+        keyboardType: widget.keyBoardType,
         readOnly: widget.readOnly,
         onTap: widget.onTap,
         onChanged: widget.onChanged,
@@ -109,9 +112,8 @@ class _AppTextfieldState extends State<AppTextfield> {
                   child: widget.suffixIcon,
                 ),
           filled: true,
-          fillColor: _myFocusNode.hasFocus
-              ? AppColors.transparent
-              : unFocusedColor,
+          fillColor:
+              _myFocusNode.hasFocus ? AppColors.transparent : unFocusedColor,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: AppColors.transparent),

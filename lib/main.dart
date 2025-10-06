@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:advansio_test_mobile/auth/sign_in.dart';
 import 'package:advansio_test_mobile/global_variables/global_variables.dart';
 import 'package:advansio_test_mobile/onboarding.dart';
+import 'package:advansio_test_mobile/storage/local_storage.dart';
 import 'package:advansio_test_mobile/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +11,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-//  Hive.registerAdapter(UserAdapter());
+  await LocalStorage.getInstance();
+
   runApp(const MyApp());
 }
 
@@ -28,7 +31,9 @@ class MyApp extends StatelessWidget {
           navigatorKey: navigatorKey,
           scaffoldMessengerKey: scaffoldMessenger,
           debugShowCheckedModeBanner: false,
-          home: const Onboarding(),
+          home: LocalStorage.retriveData(LocalStorage.firstTimer) == null
+              ? const Onboarding()
+              : SignIn(),
         ),
       ),
     );

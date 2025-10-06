@@ -25,7 +25,7 @@ class ActivityActionItems extends StatelessWidget {
     return AppInkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(left: 4),
+        padding: const EdgeInsets.only(right: 4),
         child: Container(
           width: 107,
           margin: EdgeInsets.only(right: 8),
@@ -36,7 +36,7 @@ class ActivityActionItems extends StatelessWidget {
             boxShadow: [
               if (isLast) ...[
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 12,
                   spreadRadius: 0,
                   offset: const Offset(10, 0),

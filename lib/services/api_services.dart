@@ -3,8 +3,8 @@ import 'package:advansio_test_mobile/global_variables/global_variables.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class ApiRequests {
-  ApiRequests({required this.key, this.showProgressLoader});
+class ApiServices {
+  ApiServices({required this.key, this.showProgressLoader});
   final String key;
   final bool? showProgressLoader;
   final String _baseUrl = "";

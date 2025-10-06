@@ -2,6 +2,7 @@ import 'package:advansio_test_mobile/auth/set_pin.dart';
 import 'package:advansio_test_mobile/auth/success_page.dart';
 import 'package:advansio_test_mobile/dashboard/dashboard.dart';
 import 'package:advansio_test_mobile/global_variables/constants.dart';
+import 'package:advansio_test_mobile/helpers/app_router.dart';
 import 'package:advansio_test_mobile/helpers/extensions.dart';
 import 'package:advansio_test_mobile/theme/app_colors.dart';
 import 'package:advansio_test_mobile/theme/text_style.dart';
@@ -91,19 +92,13 @@ class _BankState extends State<Bank> {
               MaterialPageRoute(
                 builder: (context) => SetPin(
                   showBackButton: true,
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SuccessPage(
-                        onPressed: () => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => Dashboard()),
-                        ),
-                        title: "Transfer completed successfully!",
-                        message: "Thanks for choosing us",
-                      ),
-                    ),
-                  ),
+                  onTap: (val) {
+                    AppRouter.replaceWith(SuccessPage(
+                      onPressed: () => AppRouter.clearAllAndPush(Dashboard()),
+                      title: "Transfer completed successfully!",
+                      message: "Thanks for choosing us",
+                    ));
+                  },
                   title: "Enter your PIN",
                   message: "Confirm transfer of ${amountController.text}",
                   buttonText: "Confirm",

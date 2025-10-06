@@ -86,7 +86,7 @@ class ScoreBoard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title, style: TextStyle(fontSize: 12)),
-        Text(remark, style: subHeaders),
+        Text(remark, style: subHeaders.copyWith()),
       ],
     );
   }
